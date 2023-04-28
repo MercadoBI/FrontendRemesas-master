@@ -1,0 +1,176 @@
+<app-header></app-header>
+<div class="container panel-body" ng-init="isDisabled = true">
+    <div class="row">
+        <div class="col-12 centrar-componente" >
+            <p class="titulo" style="margin-top: 16px;">Envíos de Transferencia</p>
+            <p class="sub-titulo" style="margin-top: 24px;">Búsqueda del Remitente</p>
+        </div>
+    </div> 
+    <div class="row" style="margin-top: 40px;">
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 8px;">País de expedición de documento</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field appearance="outline" style="width: 100%;" >
+                            <mat-select [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.paisDocumento" > <!--  [(ngModel)]="clienteRequest.tipoDocumento" -->
+                                <mat-option [disabled]="isDisableAll" *ngFor="let item of lstPaisExpedicionDocumento"  [value]="item.pais" >
+                                    {{item.pais}}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Nombre</label>
+                    </div> 
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input [disabled]="isDisableAll" knifeNoCopyPaste onkeydown="return /[a-zA-Z\s]/i.test(event.key)"  [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.nombre" matInput type="text" placeholder="Ejem. Alonso" >                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Segundo Nombre</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input knifeNoCopyPaste onkeydown="return /[a-zA-Z\s]/i.test(event.key)" matInput [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.segundoNombre"  type="text" placeholder="Ejem. David" [disabled]="isDisableSn" [disabled]="isDisableAll" >                            
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right " >
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 " >
+                        <mat-checkbox [checked]="this.isDisableSn"(change)="this.isDisableSn = !this.isDisableSn" (click)="onDisableRb('sn')"  [disabled]="isDisableAll" >
+                            No tiene
+                        </mat-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Apellido Paterno</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input [disabled]="isDisableAll" knifeNoCopyPaste onkeydown="return /[a-zA-Z\s]/i.test(event.key)"  [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.apellidoPaterno" matInput type="text" placeholder="Ejem. Santos" >                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group" >
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Apellido Materno</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input  knifeNoCopyPaste onkeydown="return /[a-zA-Z\s]/i.test(event.key)" [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.apellidoMaterno" matInput type="text" placeholder="Ejem. Castillo" [disabled]="isDisableAm" [disabled]="isDisableAll">                            
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 "  >
+                        <mat-checkbox [disabled]="isDisableAll" [checked]="this.isDisableAm"(change)="this.isDisableAm = !this.isDisableAm" (click)="onDisableRb('am')" >
+                            No tiene
+                        </mat-checkbox>
+                    </div>                                   
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Nombre de la empresa</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input knifeNoCopyPaste onkeydown="return /[a-zA-Z\s]/i.test(event.key)"  matInput [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.nombreEmpresa"  type="text" placeholder="Ejem. Azteca" [disabled]="isDisableAll">                             
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Fecha de Nacimiento</label>
+                    
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                          
+                            <mat-form-field appearance="outline">
+                            <!-- #docregion toggle -->
+                            <input matInput  maxlength="15" [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.fechaNacimiento"  [matDatepicker]="picker" placeholder="dd/MM/YYYY" [disabled]="isDisableAll">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>     
+                            <!-- #enddocregion toggle -->
+                            </mat-form-field>  
+      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+    </div>
+    
+    
+    <div class="row" style="padding-top: 24px;">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12"></div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+            <button (click)="onVolver()" mat-stroked-button class="boton-claro"  style="width: 100%;text-align: left;padding: 3px 24px 3px 24px;border: #03BB9A solid 1px;border-radius: 8px;">
+                <mat-icon style="float: left;margin-top: 4px;margin-right: 8px;" aria-hidden="false" class="icon-right" aria-label="Example home icon">chevron_left</mat-icon>
+                VOLVER
+            </button>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+            <button (click)="onValidar()" mat-stroked-button class="boton-oscuro"  style="width: 100%;text-align: left;padding: 3px 24px 3px 24px;border-radius: 8px;">
+                VALIDAR
+                <mat-icon style="float: right;margin-top: 4px;margin-left: 8px;" aria-hidden="false" class="icon-right" aria-label="Example home icon">chevron_right</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

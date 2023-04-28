@@ -1,0 +1,32 @@
+<header class="header">
+    <div class="navbar navbar-fixed-top menu-main">
+     <div class="navbar-inner navbar-fixed-top">
+      <div class="container">
+        <div class="btn-navbar collapsed" >
+        <!--  routerLink="inicio" -->
+            <div class="row">
+                    <div class="col-4 " style="padding-left: 21px;" >
+                    
+                    <img src="./assets/img/logoAlfin.svg" routerLink="/inicio" class="img-logo" alt="Inicio">
+    
+                    </div>
+                    <div class="col-8 " style="padding-top: 12px;padding-bottom: 12px;text-align: right;">
+                        
+                        <img src="./assets/img/avatar.jpg" width="50" height="50" style="border-radius: 50%;" alt="Avatar"> 
+                        
+                        <span style="margin-left: 10px;color: #8F1A95;font-weight: 500;font-size: 15px;" ngDefaultControl [(ngModel)]="nombreUsuario">{{nombreUsuario}}</span>
+                  
+                      <!--
+                          <mat-icon style="margin-left: 10px;color: rgb(153, 152, 152);font-weight: 500;font-size: 20px;" aria-hidden="false" aria-label="Example home icon">expand_more</mat-icon>
+                       -->  
+                        
+                       <button _ngcontent-njw-c20="" type="button" width="560px" class="btn btn-outline-danger btn-sm ancho-jb" (click)="cerrarsession()" >salir</button>
+                    </div>
+                    
+            </div>
+    
+        </div>
+            </div>
+        </div>
+    </div>
+    </header>

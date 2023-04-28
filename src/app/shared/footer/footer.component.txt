@@ -1,0 +1,156 @@
+
+.footer
+    position: relative
+    height: 50%
+    margin: 0 auto
+    margin-top: -20px
+    width: 100%
+    background: url('/assets/img/vector.svg') center center no-repeat
+  //  background: url('https://javatest-eldc-test.java.us2.oraclecloudapps.com/app-banco-azteca-frontend/assets/img/vector.svg') center center no-repeat
+    background-size: cover
+    z-index: -1
+
+@media only screen and (min-height: 700px) 
+    .footer
+        height: 55%
+        margin-top: -20px
+        
+@media only screen and (min-height: 800px) 
+    .footer
+        height: 55%
+        margin-top: 5px
+
+@media only screen and (min-height: 900px) 
+    .footer
+        height: 55%
+        margin-top: 60px
+        
+@media only screen and (min-height: 1000px) 
+    .footer
+        height: 55%
+        margin-top: 100px
+        
+@media only screen and (min-height: 1100px) 
+    .footer
+        height: 55%
+        margin-top: 150px
+
+@media only screen and (min-height: 1200px) 
+    .footer
+        height: 55%
+        margin-top: 200px
+        
+@media only screen and (min-height: 1300px) 
+    .footer
+        height: 55%
+        margin-top: 250px
+
+@media only screen and (min-height: 1400px) 
+    .footer
+        height: 55%
+        margin-top: 300px
+        
+@media only screen and (min-height: 1500px) 
+    .footer
+        height: 55%
+        margin-top: 350px
+        
+@media only screen and (min-height: 1600px) 
+    .footer
+        height: 55%
+        margin-top: 400px
+
+@media only screen and (min-height: 1700px) 
+    .footer
+        height: 55%
+        margin-top: 450px
+
+@media only screen and (min-height: 1800px) 
+    .footer
+        height: 55%
+        margin-top: 500px
+        
+@media only screen and (min-height: 1900px) 
+    .footer
+        height: 55%
+        margin-top: 550px
+        
+@media only screen and (min-height: 2000px) 
+    .footer
+        height: 55%
+        margin-top: 600px
+
+@media only screen and (min-height: 2100px) 
+    .footer
+        height: 55%
+        margin-top: 650px
+
+@media only screen and (min-height: 2200px) 
+    .footer
+        height: 55%
+        margin-top: 700px
+
+@media only screen and (min-height: 2300px) 
+    .footer
+        height: 55%
+        margin-top: 750px
+
+@media only screen and (min-height: 2400px) 
+    .footer
+        height: 55%
+        margin-top: 800px
+
+@media only screen and (min-height: 2500px) 
+    .footer
+        height: 55%
+        margin-top: 850px
+
+@media only screen and (min-height: 2600px) 
+    .footer
+        height: 55%
+        margin-top: 900px
+
+@media only screen and (min-height: 2700px) 
+    .footer
+        height: 55%
+        margin-top: 1000px
+
+@media only screen and (min-height: 2800px) 
+    .footer
+        height: 55%
+        margin-top: 1050px
+
+@media only screen and (min-height: 2900px) 
+    .footer
+        height: 55%
+        margin-top: 1100px
+
+@media only screen and (min-height: 3000px) 
+    .footer
+        height: 55%
+        margin-top: 1150px
+
+@media only screen and (min-height: 3100px) 
+    .footer
+        height: 55%
+        margin-top: 1200px
+
+@media only screen and (min-height: 3200px) 
+    .footer
+        height: 55%
+        margin-top: 1250px
+
+@media only screen and (min-height: 3300px) 
+    .footer
+        height: 55%
+        margin-top: 1300px
+
+@media only screen and (min-height: 3400px) 
+    .footer
+        height: 55%
+        margin-top: 1350px
+
+@media only screen and (min-height: 3500px) 
+    .footer
+        height: 55%
+        margin-top: 1400px

@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="container panel-body">
+    <div class="row">
+        <div class="col-12 centrar-componente" >
+            <p class="titulo" style="margin-top: 16px;">Envíos de Transferencia</p>
+            <p class="sub-titulo" style="margin-top: 24px;color:#8F1A95">Búsqueda del Remitente</p>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 40px;">
+        <div class="col-3"></div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">Tipo de documento</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select [(ngModel)]="clienteRequest.tipoDocumento" >
+                              <mat-option *ngFor="let item of lstTipoDocumento"  [value]="item.valor1">
+                                  {{item.valor2}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">Número de documento</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input  knifeNoSpaces  knifeAlphanumeric  maxlength="15" name="numeroDocumento" matInput [(ngModel)]="clienteRequest.numeroDocumento"  type="text" placeholder="Ingrese Numero de Documento">                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row" style="margin-top: 24px;">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12"></div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+            <button routerLink="/inicio" mat-stroked-button class="boton-claro"  style="width: 100%;text-align: left;padding: 3px 24px 3px 24px;border: #03BB9A solid 1px;border-radius: 8px;">
+                <mat-icon style="float: left;margin-top: 4px;margin-right: 8px;" aria-hidden="false" class="icon-right" aria-label="Example home icon">close</mat-icon>
+                CANCELAR
+            </button>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+            <button (click)="onBuscarCliente()" mat-stroked-button class="boton-oscuro"  style="width: 100%;text-align: left;padding: 3px 24px 3px 24px;border-radius: 8px;">
+                BUSCAR
+                <mat-icon style="float: right;margin-top: 4px;margin-left: 8px;" aria-hidden="false" class="icon-right" aria-label="Example home icon">chevron_right</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

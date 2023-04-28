@@ -1,0 +1,227 @@
+@import "~bootstrap/scss/functions"
+@import "~bootstrap/scss/variables"
+
+@import 'material-icons/iconfont/material-icons.css'
+//$theme-colors: (primary: #333333)
+
+@import '~bootstrap/scss/bootstrap'
+
+input[type="checkbox"] 
+    background: #990000
+
+.mat-dialog-container .mat-dialog-actions button:first-child
+    background: #FA4616!important
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick
+    color: #FA4616 !important
+    
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick
+    color: #FA4616 !important
+
+.mat-form-field-infix
+    color: #FA4616 !important
+
+.mat-option-text
+    color: #FA4616 !important
+
+.mat-form-field-infix
+    border-top-width: 5px
+
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow 
+    color: #FA4616 !important
+
+.mat-select-min-line .ng-tns-c93-1 .ng-star-inserted
+    color: #00947A !important
+
+.mat-checkbox-frame
+    border: #00947A solid 2px !important
+
+@font-face 
+    font-family: Mont-Light
+    src: url(/WebRemesasPrd/assets/fonts/Mont-Light.otf) format('truetype')
+    //src: url(https://javatest-eldc-test.java.us2.oraclecloudapps.com/app-banco-azteca-frontend/assets/fonts/Mont-Light.otf) format('truetype')
+
+@font-face 
+    font-family: Mont-Bold
+    src: url(/WebRemesasPrd/assets/fonts/Mont-Bold.otf) format('truetype')
+    //src: url(https://javatest-eldc-test.java.us2.oraclecloudapps.com/app-banco-azteca-frontend/assets/fonts/Mont-Bold.otf) format('truetype')
+
+@font-face 
+    font-family: Mont-SemiBold
+    src: url(/WebRemesasPrd/assets/fonts/Mont-SemiBold.otf) format('truetype')
+    //src: url(https://javatest-eldc-test.java.us2.oraclecloudapps.com/app-banco-azteca-frontend/assets/fonts/Mont-SemiBold.otf) format('truetype')
+
+html 
+  min-height: 100%
+  position: relative
+
+body
+    margin: 0
+    margin-bottom: 40px
+    font-family: Mont-Light !important
+    //margin: 0 !important
+
+.required::after
+    font-weight: negrita
+    color: red
+    content: " *"
+
+.col-right
+    text-align: right
+
+.centrar-componente
+    text-align: center
+    float: none
+
+.titulo
+    font-size: 32px
+    color: #53565a
+    font-family: Mont-Bold !important
+
+.idremesa
+    font-size: 28px
+    font-family: Mont-SemiBold !important
+
+.secuencial
+    font-size: 20px
+    font-family: Mont-Light !important
+
+.sub-titulo
+    color: #8F1A95
+    font-size: 16px
+    font-family: Mont-Light !important
+
+
+.sub-titulo-pregunta
+    color: #3E404E
+    font-size: 16px
+    font-family: Mont-SemiBold !important
+
+.boton-oscuro
+    text-align: left
+    background: #FA4616
+    color: #fff
+    border-color: #FA4616
+    font-family: Mont-SemiBold
+    font-size: 16px
+
+.mat-datepicker-toggle-active
+    color: #00947A
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element
+    background: #00947a
+
+
+.boton-oscuro:hover
+    background: #FA4616
+
+
+.boton-claro
+    padding-top: 5px
+    padding-bottom: 5px
+    text-align: left
+    color: #FA4616
+    background: #FFF
+    font-family: Mont-SemiBold
+    font-size: 16px
+    border:#FA4616 solid 1px !important
+
+
+.boton-claro:hover
+    background: #FA4616
+    color: #fff
+
+.mat-form-field-appearance-outline.mat-focused > .icono-oscuro
+    color: #ccc
+
+.icono-oscuro
+    color: #03BB9A
+
+.icono-claro
+    color: #ccc
+
+input::placeholder
+  color: #DDD !important
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background 
+  background-color: #8F1A95 !important
+
+.mat-form-field-wrapper
+    padding-bottom: 8px !important
+
+mat-checkbox
+    padding-bottom: 8px !important
+
+.mat-calendar-body-selected 
+    background-color: #000 !important
+
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical), .cdk-keyboard-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical), .cdk-program-focused .mat-calendar-body-active>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical)
+    background-color: #8F1A95 !important
+
+
+.mat-form-field-outline
+    background: #FFF !important
+
+.mat-select-value
+    color: #FA4616 !important
+
+
+.mat-progress-spinner circle, .mat-spinner circle 
+    stroke: #FA4616
+
+.mat-form-field-outline-end 
+    border-radius: 8px !important
+    border: 1px solid #ccc !important
+
+.mat-focused
+    .mat-form-field-outline-end 
+        border: 2px solid #8F1A95 !important
+
+.mat-form-field-outline-start
+    display: none
+
+.mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after 
+    color: #333
+
+
+.label
+    font-size: 16px !important
+    //font-family: Mont-SemiBold
+    
+.etiqueta
+    font-size: 16px
+    font-family: Mont-SemiBold
+
+.input
+    font-size: 16px
+
+.boton
+    font-size: 16px
+
+.btn-outline-danger
+     color:#FA4616 !important
+     border-color:#FA4616 !important
+
+.btn-outline-danger:hover
+     color:#fff !important
+     border-color:#FA4616 !important
+     background-color:#FA4616 !important
+
+.btn-outline-danger:active
+     color:#fff !important
+     border-color:#FA4616 !important
+     background-color:#FA4616 !important
+
+
+
+
+
+
+
+@media only screen and (max-width: 991px) 
+    .text-right
+        text-align: left
+    
+    .col-right
+        text-align: left
+

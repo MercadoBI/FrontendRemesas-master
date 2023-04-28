@@ -1,0 +1,11 @@
+
+<span class="material-icons" style="font-size: 20px;color: #F11507;"> dangerous </span>
+<h2 mat-dialog-title style="display:inline;">
+{{data.titulo}}</h2>
+<div mat-dialog-content>
+  <p>{{data.contenido}}</p>
+</div>
+<div mat-dialog-actions align="end"><!-- cdkFocusInitial -->
+  <button mat-button *ngIf="data.btnCancelar.visible" (click)="dialogRef.close(false)">{{data.btnCancelar.texto}}</button>
+  <button mat-button *ngIf="data.btnAceptar.visible" (click)="dialogRef.close(true)">{{data.btnAceptar.texto}}</button>
+</div>

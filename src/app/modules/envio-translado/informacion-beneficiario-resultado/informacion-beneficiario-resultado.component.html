@@ -1,0 +1,212 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row"> 
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" >
+            <p class="titulo" style="margin-top: 16px;">Envíos de Transferencia</p>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="text-align: right;">
+            <label class="idremesa"  [(ngModel)]="this.detalleEnvio.idremesa" style="margin-top: 16px;">ID REMESA  {{this.detalleEnvio.idremesa}} &nbsp;&nbsp;</label>
+          
+        </div>
+    </div>
+
+    <div class="row"> 
+        <div class="col-12" >
+            <p class="sub-titulo" style="margin-top: 24px;">Datos del Beneficiario</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">Nombres</label>                   
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input matInput  type="text"   ngDefaultControl  [(ngModel)]="detalleEnvio.receiver.givenNameReceiver"disabled="true" />                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">Apellidos</label>                   
+                    
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input matInput type="text"  ngDefaultControl   [(ngModel)]="ApellidosReceiver"  disabled="true"/>                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">País</label>                   
+                    
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input matInput type="text" ngDefaultControl  [value]="item.countrY_LONG" *ngFor="let item of paisnombre"  disabled="true" />                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <div class="row"> 
+        <div class="col-12" >
+            <p class="sub-titulo" style="margin-top: 24px;">Datos del Remitente</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">Nombres</label>                   
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input matInput type="text" ngDefaultControl    [(ngModel)]="detalleEnvio.sender.givenNameSender" disabled="true"/>                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">Apellidos</label>                   
+                    
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input matInput type="text"   ngDefaultControl  [(ngModel)]="ApellidosSender" disabled="true"/>                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">País</label>                   
+                    
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input matInput type="text"  ngDefaultControl   [(ngModel)]="detalleEnvio.sender.addressCountryNameSender" disabled="true"/>                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <hr>
+    
+    <div class="row"> 
+        <div class="col-12" >
+            <p class="sub-titulo" style="margin-top: 24px;">Datos de Pago</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">Cantidad</label>                   
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input matInput type="text"  ngDefaultControl  [(ngModel)]="Cantidad" disabled="true"/>                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">ITF (0.005%)</label>                   
+                    
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input matInput type="text" ngDefaultControl value="0.00" disabled="true"/>                            
+                        </mat-form-field>
+                    </div>
+                </div>  
+             <!--   <div style="margin-left: 420px; margin-top: 30px;" class="col-xl-7 col-lg-7 col-md-12 col-sm-12 ">
+                    <mat-checkbox (click)="onDisableRb('valCli')">
+                        Se valida que <br/>que el Envío  no es  <br/>Por Terceros.
+                    </mat-checkbox>
+                </div>  -->             
+            </div>
+        </div>
+
+
+
+
+        
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">TOTAL A PAGAR</label>                   
+                     
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;">
+                            <input matInput type="text"    ngDefaultControl [(ngModel)]="CantidadTotal" disabled="true"/>                            
+                        </mat-form-field>
+                    </div>
+                    <div style="margin-left: 200px; margin-top: 30px;" class="col-xl-7 col-lg-7 col-md-12 col-sm-12 ">
+                        <mat-checkbox (click)="onDisableRb('val')">
+                            El Cliente <br/>Acepta Terminos y<br/> Condiciones
+                        </mat-checkbox>
+                    </div>                    
+                </div>                
+            </div>
+        </div>   
+    </div>
+
+
+
+
+    <div class="row" style="padding-top: 24px;">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12"></div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+            <button routerLink="/envio-translado-informacion-beneficiario" mat-stroked-button class="boton-claro"  style="width: 100%;text-align: left;padding: 3px 24px 3px 24px;border: #03BB9A solid 1px;border-radius: 8px;">
+                <mat-icon style="float: left;margin-top: 4px;margin-right: 8px;" aria-hidden="false" class="icon-right" aria-label="Example home icon">chevron_left</mat-icon>
+                VOLVER
+            </button>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+            <button (click)="onSendBT()" mat-stroked-button class="boton-oscuro"  style="width: 100%;text-align: left;padding: 3px 24px 3px 24px;border-radius: 8px;">
+                ENVIAR
+                <mat-icon style="float: right;margin-top: 4px;margin-left: 8px;" aria-hidden="false" class="icon-right" aria-label="Example home icon">chevron_right</mat-icon>
+            </button>
+        </div>
+    </div>
+
+</div>
+<app-footer></app-footer>

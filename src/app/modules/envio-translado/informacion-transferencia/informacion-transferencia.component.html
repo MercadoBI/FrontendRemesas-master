@@ -1,0 +1,770 @@
+<app-header></app-header>
+<div class="container panel-body">
+    <div class="row"> 
+        <div class="col-12" >
+            <p class="titulo" style="margin-top: 16px;">Envíos de Transferencia</p>
+            <p class="sub-titulo" style="margin-top: 24px;">Información de la Transferencia</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">País de pago</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select  ngDefaultControl [(ngModel)]="paisesWU.countrY_LONG">
+                                <mat-option (click)="onMonedaPais()" *ngFor="let item of lstCambioMoneda"  [value]="item.currencY_CD+'/'+item.isO_COUNTRY_CD">
+                                    {{item.countrY_LONG}}
+                                </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 " *ngIf="isDisableEst">           
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Estado </label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field appearance="outline" style="width: 100%;"> 
+                            <mat-select  ngDefaultControl [(ngModel)]="this.estado"  >
+                                <mat-option  *ngFor="let item of lstEstados"  [value]="item.statE_CODE+'/'+item.statE_NAME" >
+                                    {{item.statE_NAME}}
+                                </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Moneda de envío</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select  ngDefaultControl [(ngModel)]="this.tipoCambioMoneda.destinationCountryIsoCurrency">
+                                <mat-option (click)="onVaciar()" *ngFor="let item of lstMoneda"  [value]="item.currencY_CD">
+                                    {{item.currencY_NAME}}
+                                </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+        </div>
+    </div>
+
+   
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right" style="padding-top: 16px;">Tipo de cambio</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 " style="text-align: right;">
+                        <label class="label text-right" ngDefaultControl [(ngModel)]="this.listaremesa.tipoCambio" style="padding-top: 16px;padding-bottom: 16px;padding-right: 16px;color: #ccc;">1 USD = {{listaremesa.tipoCambio}}  </label>                   
+                        <label class="label text-right" ngDefaultControl [(ngModel)]="this.tipoCambioMoneda.destinationCountryIsoCurrency " style="padding-top: 16px;padding-bottom: 16px;padding-right: 16px;color: #ccc;"> {{tipoCambioMoneda.destinationCountryIsoCurrency}} </label>                 
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+            </div>
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Cantidad de envío</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="width: 100%;font-family: Mont-Light;text-align: right;">
+                            <input  knifeNoCopyPaste knifeNoSpaces  knifeOnlyNumbers   matInput type="number" ngDefaultControl [(ngModel)]="cantidadEnvio" placeholder="Ejem. 50.00">                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right " style="padding-top: 16px;">Cantidad a recibir</label> 
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline"style="width: 100%;font-family: Mont-Light;text-align: right;">
+                            <input  matInput type="text" disabled="true" ngDefaultControl [(ngModel)]="cantidadrecibir" [value]=""  >                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ">
+            <button   (click)="onTipoCambio()" mat-stroked-button class="boton-oscuro"  style="width: 100%;text-align: left;padding: 3px 24px 3px 24px;margin-top: 4px;border-radius: 8px;">
+                COTIZAR
+                <mat-icon style="float: right;margin-top: 4px;margin-left: 8px;" aria-hidden="false" class="icon-right" aria-label="Example home icon">search</mat-icon>
+            </button>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right">Comisión</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 " style="text-align: right;">
+                        <label class="label text-right" ngDefaultControl [(ngModel)]="comision" style="padding-right: 16px;color: #ccc;">{{comision}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right">IGV (18%)</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 " style="text-align: right;">
+                        <label class="label text-right" ngDefaultControl [(ngModel)]="igv" style="padding-right: 16px;color: #ccc;">0</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right">ITF (0,005%)</label>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 " style="text-align: right;">
+                        <label class="label text-right" style="padding-right: 16px;color: #ccc;">0.00</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+    </div>
+    
+    <div class="row" style="margin-top: 8px;">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right "  style="padding-top: 16px;">Cantidad Total</label>                   
+                    
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline"style="width: 100%;font-family: Mont-Light;text-align: right;">
+                            <input  matInput type="text" disabled="true" ngDefaultControl ngDefaultControl [(ngModel)]="cantidadtotal" [value]="cantidadtotal"  >                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 "></div>
+    </div>
+    
+    <hr>
+    
+    <div class="row"> 
+        <div class="col-12" >
+            <p class="sub-titulo" style="margin-top: 8px;">Documento de Identificación</p>
+        </div>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Fecha de caducidad</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <!-- #docregion toggle -->
+                            <input matInput [matDatepicker]="picker1" ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.fechaCaducidad"  placeholder="dd/MM/YYYY" >
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1 ></mat-datepicker>
+                            <!-- #enddocregion toggle -->
+                        </mat-form-field>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Fecha de emisión</label>                   
+                    
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <!-- #docregion toggle -->
+                            <input matInput ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.fechaEmision" [matDatepicker]="picker" placeholder="dd/MM/YYYY">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <!-- #enddocregion toggle -->
+                            </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">País de nacimiento</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                       
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.codPaisNacimiento">
+                                <mat-option  *ngFor="let item of lstPaisNacimiento"  [value]="item.codigo+'/'+item.pais" >
+                                    {{item.pais}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">País de nacionalidad</label>                   
+                    
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.codPaisNacionalidad" >
+                                <mat-option *ngFor="let item of lstPaisNacimiento"  [value]="item.codigo+'/'+item.pais">
+                                    {{item.pais}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Ocupación</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select  ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.ocupacion"placeholder="Por favor seleccione..." >
+                                <mat-option  *ngFor="let item of lstocupacion" (click) ="validarpuesto(item.valor3)" [value]="item.valor3" >
+                                    {{item.valor2}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Puesto / Cargo</label>                   
+                    
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select  placeholder="Nivel Básico/Analista/Asistente" ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.puestoCargo"placeholder="Por favor seleccione..." >
+                                <mat-option  *ngFor="let item of lstpuestocargo" [value]="item.valor3" >
+                                    {{item.valor2}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Motivo de transacción</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select placeholder="Por favor seleccione..." ngDefaultControl [(ngModel)]="listaremesa.motivoTransaccion" >
+                                <mat-option  *ngFor="let item of lstmotivo"  [value]="item.valor3">
+                                    {{item.valor2}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Origen de fondos</label>                   
+                    
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select placeholder="Por favor seleccione..." ngDefaultControl [(ngModel)]="listaremesa.origenFondos">
+                                <mat-option  *ngFor="let item of lstOrigenFondo"  [value]="item.valor3">
+                                    {{item.valor2}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Relación con el destinatario</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select placeholder="Por favor seleccione..." ngDefaultControl [(ngModel)]="listaremesa.relacionDestinatario" placeholder="Por favor seleccione..." >
+                                <mat-option  *ngFor="let item of lstRelacionDestinatario"  [value]="item.valor3">
+                                    {{item.valor2}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Sexo</label>                   
+                    
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.sexo"placeholder="Por favor seleccione..." >
+                                <mat-option  *ngFor="let item of lstsexo"  [value]="item.valor1">
+                                    {{item.valor2}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="background-color: #F4F4F4;border-radius: 8px;margin-top: 8px;"> 
+        <div class="col-12" >
+            <p class="sub-titulo-pregunta" style="margin-top: 16px;padding-left: 16px;">Pregunta para personas expuestas políticamente</p>
+        </div>
+        
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Cliente PEP?</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline"  style="width: 100%;">
+                            <mat-select  placeholder="Por favor seleccione..." ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.pep">
+                                <mat-option  *ngFor="let item of lstpep" [value]="item.valor1">{{item.valor2}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12" >
+            <p style="margin-top: 8px;padding-left: 16px;padding-right: 16px;">
+                ¿Tiene o ha tenido un puesto de alto rango en cargos públicos del gobierno o un puesto de alto rango en alguna entidad perteneciente al gobierno, pariente cercano o socio cercano de una Persona en esta situación?
+            </p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row"> 
+        <div class="col-12" >
+            <p class="sub-titulo" style="margin-top: 8px;">Datos del Remitente</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Pais de residencia</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.codPaisResidencia" >
+                                <mat-option *ngFor="let item of lstPaisResidencia"   [value]="item.codigo+'/'+item.pais">
+                                    {{item.pais}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+        </div>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-right ">
+                        <label  class="label text-right required" style="padding-top: 16px;">Dirección N° 1</label>                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="padding-left: 6px;width: 100%;font-family: Mont-Light;">
+                            <input knifeAlphanumeric  matInput ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.direccion1" type="text" placeholder="Ejem. Calle los Cedros #333">                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <!--  <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                        <mat-checkbox (click)="onDisablePa('Y')" style="padding-top: 16px;">
+                            Domicilio en otro país
+                        </mat-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Provincia</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select placeholder="Por favor seleccione..." ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.departamento" [disabled]="isDisableOP"> 
+                                <mat-option *ngFor="let item of lstubigeos" (click) ="onChangeUbigeoDepartamento(item.codUbigeo)"[value]="item.codUbigeo+'/'+item.departamento" >
+                                 {{item.departamento}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Distrito</label>                   
+                    
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select placeholder="Por favor seleccione..."ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.provincia" [disabled]="isDisableOP">
+                                <mat-option  *ngFor="let item of lstubigeosprovincia" (click) ="onChangeUbigeoProvincia(item.codUbigeo)" [value]="item.codUbigeo+'/'+item.provincia">
+                                  {{item.provincia}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Corregimiento</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select placeholder="Por favor seleccione..." ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.distrito" [disabled]="isDisableOP" >
+                                <mat-option  *ngFor="let item of lstubigeosdistritos" [value]="item.codUbigeo+'/'+item.distrito">
+                                    {{item.distrito}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!--<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Código postal</label>                   
+                    
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">                           
+                            <input maxlength="5" knifeNoCopyPaste knifeNoSpaces  knifeOnlyNumbers   matInput ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.codPostal" type="text"  placeholder="00000" [disabled]="isDisableOP">
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </div>
+
+    
+    
+    <div class="row">
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-right ">
+                        <label knifeNoSpaces class="label text-right required" style="padding-top: 16px;">Email</label>                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div  class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 input">
+                        <mat-form-field appearance="outline" style="padding-left: 6px;width: 100%;font-family: Mont-Light;">
+                            <input type="text"  name="field" #field="ngModel" email knifeNoSpaces matInput ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.email"  placeholder="Ejem. carlos112@gmail.com">                            
+                         </mat-form-field >   
+                         <p style="color:#FF0000" *ngIf="field.errors?.email">Formato de Email No Valido</p>                          
+                    </div>
+                </div>  
+            </div>
+        </div>   
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+     </div>     
+    </div>
+
+
+    
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 8px;">Código del país para el teléfono</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select placeholder="Por favor seleccione..." ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.codTelfPais"placeholder="Por favor seleccione..." [disabled]="isDisableTel">
+                                <mat-option  knifeNoCopyPaste knifeNoSpaces  knifeOnlyNumbers  *ngFor="let item of lstcodPais"  [value]="item.valor2">
+                                    {{item.valor2}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Número de teléfono</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="padding-left: 6px;width: 100%;font-family: Mont-Light;">
+                            <input  knifeNoCopyPaste knifeNoSpaces  knifeOnlyNumbers  matInput ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.numeroTelfMovil" type="text" placeholder="Ejem. 99999999" [disabled]="isDisableTel">                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                        <mat-checkbox [checked]="this.isDisableTel"(change)="this.isDisableTel = !this.isDisableTel" (click)="oncheckvalidarTel('Y')" >
+                            No tiene  
+                        </mat-checkbox> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+    <div class="row">
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 8px;">Código del país para el movil</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-select placeholder="Por favor seleccione..." ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.codMovilPais"placeholder="Por favor seleccione..." [disabled]="isDisablePhon">
+                                <mat-option  *ngFor="let item of lstcodPais"  [value]="item.valor2">
+                                    {{item.valor2}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-right ">
+                        <label class="label text-right required" style="padding-top: 16px;">Teléfono movil</label>                   
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 input">
+                        <mat-form-field  appearance="outline" style="padding-left: 6px;width: 100%;font-family: Mont-Light;">
+                            <input  knifeNoCopyPaste knifeNoSpaces  knifeOnlyNumbers  matInput ngDefaultControl [(ngModel)]="clienteBean.clienteResponse.detalle.Cliente.numeroTelefono" type="text" placeholder="Ejem. 99999999"  [disabled]="isDisablePhon">                            
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---->
+        <div style="margin-left: 100px; margin-top: 30px;" class="col-xl-7 col-lg-7 col-md-12 col-sm-12 ">
+            <mat-checkbox (click)="onDisableRb('val')">
+                Se valida que <br/>Los Datos Son Correctos
+            </mat-checkbox>
+        </div>
+        <!---->
+        
+    <div class="row" style="padding-top: 8px;">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12"></div>
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+            <button routerLink="/envio-translado-validacion" mat-stroked-button class="boton-claro"  style="width: 100%;text-align: left;padding: 3px 24px 3px 24px;border: #03BB9A solid 1px;border-radius: 8px;">
+                <mat-icon style="float: left;margin-top: 4px;margin-right: 8px;" aria-hidden="false" class="icon-right" aria-label="Example home icon">chevron_left</mat-icon>
+                VOLVER
+            </button>
+        </div> 
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+            <button (click)="onCrearCliente()" mat-stroked-button class="boton-oscuro"  style="width: 100%;text-align: left;padding: 3px 24px 3px 24px;border-radius: 8px;">
+                VALIDAR
+                <mat-icon style="float: right;margin-top: 4px;margin-left: 8px;" aria-hidden="false" class="icon-right" aria-label="Example home icon">chevron_right</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
