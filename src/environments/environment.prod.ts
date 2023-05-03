@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,//
+  production: false,
   dominio: {
     host: 'https://javatest-eldc-test.java.us2.oraclecloudapps.com/app-banco-azteca-frontend',
   },
