@@ -14,6 +14,7 @@ export const environment = {
     //host: "http://10.105.0.8:9000/api"
     //host: "https://bancoaztecaremesaswebapihg.azurewebsites.net/api"
      host: "https://localhost:50612/api" //Server Banco Azteca 
+     //host: "https://localhost:63630/api" // local Dev
     ////host: "https://aztecawebapi.azurewebsites.net/api"
     //  host:"https://10.105.0.8:9099/api"
   },
