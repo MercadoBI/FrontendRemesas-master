@@ -136,76 +136,77 @@ export class ValidacionComponent  extends JsBase implements OnInit {
   async onValidar() {
     this.abrirCargando();
     const cucho = this.validarCasillas()
-    if (cucho){   
-      
-    const cliente = this.clienteBean.clienteResponse.detalle.Cliente;
-    const listanegra = this.validarListaNegraRequest;
-    cliente.nroDocumento ? cliente.nroDocumento : cliente.nroDocumento = this.clienteBean.clienteRequest.numeroDocumento;
-    cliente.tipoDocumento ? cliente.tipoDocumento : cliente.tipoDocumento = this.clienteBean.clienteRequest.tipoDocumento;
-    let fechanac = this.datepipe.transform(cliente.fechaNacimiento, "yyyy-MM-dd");
-    listanegra.paisDocumentoId = this.codigoPais+'-'+cliente.paisDocumento;//"604-PERU";
-    if(this.clienteBean.clienteRequest.tipoDocumento=="01"){
-      this.Doc="1-D.N.I."
-    }if(this.clienteBean.clienteResponse.detalle.Cliente.tipoDocumento=="02"){
-      this.Doc="2-C.E."; 
-    }if(this.clienteBean.clienteResponse.detalle.Cliente.tipoDocumento=="03"){
-      this.Doc="3-P.T.P."  
-    }if(this.clienteBean.clienteResponse.detalle.Cliente.tipoDocumento=="05"){
-      this.Doc="5-Cedula de Identidad"
-    }if(this.clienteBean.clienteResponse.detalle.Cliente.tipoDocumento=="06"){
-      this.Doc="6-Pasaporte"
-    }    
-    console.log(this.Doc)
-    listanegra.tipoDocumentoId =this.Doc;//"1-D.N.I.";
-    listanegra.numeroDocumento = cliente.nroDocumento;
-    listanegra.primerNombre = cliente.nombre;
-    listanegra.segundoNombre = cliente.segundoNombre;
-    listanegra.primerApellido = cliente.apellidoPaterno;
-    listanegra.segundoApellido = cliente.apellidoMaterno;
-    listanegra.nombreEmpresa = "";
-    listanegra.fechaNacimiento = fechanac?.toString();
-    this.clienteBean.clienteResponse.detalle.Cliente.fechaNacimiento = fechanac?.toString();
-    
-    
-     this.onCrearCliente(this.clienteBean);
-     const slow$ = timer(7000);
+    if (cucho) {
+
+      const cliente = this.clienteBean.clienteResponse.detalle.Cliente;
+      const listanegra = this.validarListaNegraRequest;
+      cliente.nroDocumento ? cliente.nroDocumento : cliente.nroDocumento = this.clienteBean.clienteRequest.numeroDocumento;
+      cliente.tipoDocumento ? cliente.tipoDocumento : cliente.tipoDocumento = this.clienteBean.clienteRequest.tipoDocumento;
+      let fechanac = this.datepipe.transform(cliente.fechaNacimiento, "yyyy-MM-dd");
+      listanegra.paisDocumentoId = this.codigoPais + '-' + cliente.paisDocumento;//"604-PERU";
+      if (this.clienteBean.clienteRequest.tipoDocumento == "01") {
+        this.Doc = "1-D.N.I."
+      } if (this.clienteBean.clienteResponse.detalle.Cliente.tipoDocumento == "02") {
+        this.Doc = "2-C.E.";
+      } if (this.clienteBean.clienteResponse.detalle.Cliente.tipoDocumento == "03") {
+        this.Doc = "3-P.T.P."
+      } if (this.clienteBean.clienteResponse.detalle.Cliente.tipoDocumento == "05") {
+        this.Doc = "5-Cedula de Identidad"
+      } if (this.clienteBean.clienteResponse.detalle.Cliente.tipoDocumento == "06") {
+        this.Doc = "6-Pasaporte"
+      }
+      console.log(this.Doc)
+      listanegra.tipoDocumentoId = this.Doc;//"1-D.N.I.";
+      listanegra.numeroDocumento = cliente.nroDocumento;
+      listanegra.primerNombre = cliente.nombre;
+      listanegra.segundoNombre = cliente.segundoNombre;
+      listanegra.primerApellido = cliente.apellidoPaterno;
+      listanegra.segundoApellido = cliente.apellidoMaterno;
+      listanegra.nombreEmpresa = "";
+      listanegra.fechaNacimiento = fechanac?.toString();
+      this.clienteBean.clienteResponse.detalle.Cliente.fechaNacimiento = fechanac?.toString();
+
+
+      this.onCrearCliente(this.clienteBean);
+      const slow$ = timer(7000);
      slow$.subscribe(()=>{this.router.navigate(['/envio-translado-informacion-transferencia'])});
      this.cerrarCargando();
-    
-    
-   /*await this.api.postValidarListaNegra(this.validarListaNegraRequest).subscribe(res => {      
-      const cliente = this.clienteBean.clienteResponse.detalle.Cliente;
-      let response = res.detalle.ListaNegraResponse.existeEnLista;
-      //preguntar si debo registrar cliente estando en lista negra  
-      if (response == "N") {
-        if (!cliente.idCliente) {
-          this.onCrearCliente(this.clienteBean);
-        }
-     
-       
-        this.onModalConfirmacion("Cliente no esta en lista negra", response);
-        this.cerrarCargando();
-       // this.router.navigate(['/envio-translado-informacion-transferencia']);
+
+
+      /*await this.api.postValidarListaNegra(this.validarListaNegraRequest).subscribe(res => {      
+         const cliente = this.clienteBean.clienteResponse.detalle.Cliente;
+         let response = res.detalle.ListaNegraResponse.existeEnLista;
+         //preguntar si debo registrar cliente estando en lista negra  
+         if (response == "N") {
+           if (!cliente.idCliente) {
+             this.onCrearCliente(this.clienteBean);
+           }
         
-      } else if (response == "S") {
-        
-        this.cerrarCargando();
-        this.onModalAdvertencia("Comunicarse a la línea Azteca");
-        this.onModalAdvertencia("Cliente esta en lista negra");        
-        localStorage.removeItem("ClienteBeanEnvioTranslado");
-        this.cerrarCargando();   
-        this.router.navigate(['/envio-translado-busqueda']);
-      } else {
+          
+           this.onModalConfirmacion("Cliente no esta en lista negra", response);
+           this.cerrarCargando();
+          // this.router.navigate(['/envio-translado-informacion-transferencia']);
+           
+         } else if (response == "S") {
+           
+           this.cerrarCargando();
+           this.onModalAdvertencia("Comunicarse a la línea Azteca");
+           this.onModalAdvertencia("Cliente esta en lista negra");        
+           localStorage.removeItem("ClienteBeanEnvioTranslado");
+           this.cerrarCargando();   
+           this.router.navigate(['/envio-translado-busqueda']);
+         } else {
+          
+           this.cerrarCargando();
+           this.onModalConfirmacion("Hubo un Error interno", "");
+         }
        
-        this.cerrarCargando();
-        this.onModalConfirmacion("Hubo un Error interno", "");
-      }
-    
-    
+       
+       this.cerrarCargando();
+       })*/
+
+    }
     this.cerrarCargando();
-    })*/
-    this.cerrarCargando();
-  }
   }
 
   

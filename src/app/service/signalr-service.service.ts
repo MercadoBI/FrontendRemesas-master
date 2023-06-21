@@ -25,9 +25,9 @@ export class SignalrServiceService {
         .build();
 
       const ReqSesion = {
-        UserLogin: this.session.detalle?.estado.usuarioLogin,
-        CodeSatelite: this.session.detalle?.estado.codigoSatelite,
-        SessionId: this.session.detalle?.estado.sessionId,
+        UserLogin: this.session?.detalle?.estado.usuarioLogin,
+        CodeSatelite: this.session?.detalle?.estado.codigoSatelite,
+        SessionId: this.session?.detalle?.estado.sessionId,
       };
       await connection.start();
       await connection.invoke(

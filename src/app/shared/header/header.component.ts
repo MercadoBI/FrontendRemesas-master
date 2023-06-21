@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.sass'],
 })
-//me voy toy con sueño :(
+
 export class HeaderComponent extends JsBase implements OnInit {
   detalleLogin: DetalleLogin = {} as DetalleLogin;
   connection: signalR.HubConnection;
@@ -195,8 +195,8 @@ export class HeaderComponent extends JsBase implements OnInit {
     this.detalleLogin = <DetalleLogin>(
       JSON.parse(<string>sessionStorage.getItem('UsuarioLogin'))
     );
-    this.nombreUsuario = this.detalleLogin.detalle?.estado.nombreUsuario;
-    this.usuarioLogin = this.detalleLogin.detalle?.estado.usuarioLogin;
+    this.nombreUsuario = this.detalleLogin?.detalle?.estado.nombreUsuario;
+    this.usuarioLogin = this.detalleLogin?.detalle?.estado.usuarioLogin;
     this.cdref.detectChanges();
   }
 

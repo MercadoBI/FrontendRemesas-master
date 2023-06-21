@@ -74,16 +74,15 @@ export class FormaPagoComponent extends JsBase implements OnInit {
               this.RemesaResponse.detalle.idremesa.toString();
             console.log(this.RemesaResponse.detalle.idremesa.toString());
             envia_recibe_remesa.envrec = 'R';
-            envia_recibe_remesa.sucursal =
-              this.detalleLogin.detalle.estado.codigoAgencia;
-            envia_recibe_remesa.usuario =
-              this.detalleLogin.detalle.estado.usuarioLogin;
-            if (localStorage.getItem('MTCNListaWU') != null) {
-              envia_recibe_remesa.idremesadora = '2';
-            } else {
-              envia_recibe_remesa.idremesadora = '1';
-            }
-            envia_recibe_remesa.mdapag = '2';
+            envia_recibe_remesa.sucursal = '1', //this.detalleLogin.detalle.estado.codigoAgencia;
+            envia_recibe_remesa.usuario = 'INSTALADOR';//this.detalleLogin.detalle.estado.usuarioLogin;
+            // if (localStorage.getItem('MTCNListaWU') != null) {
+            //   envia_recibe_remesa.idremesadora = '2';
+            // } else {
+            //   envia_recibe_remesa.idremesadora = '1';
+            // }
+            envia_recibe_remesa.idremesadora = '1';
+            envia_recibe_remesa.mdapag = '101';//2
             envia_recibe_remesa.impmdapag =
               this.validarClienteMTCM.mtcResponse.detalle.detalle.response.beneAmount.toString();
             envia_recibe_remesa.impcomrem = '0';
@@ -117,8 +116,7 @@ export class FormaPagoComponent extends JsBase implements OnInit {
                   return;
                 } else {
                   this.onModalInformacion(
-                    'Su pago se registró con éxito \n IDREMESA    0000' +
-                      this.RemesaResponse.detalle.idremesa.toString()
+                    'Su pago se registró con éxito \n IDREMESA    0000'+this.RemesaResponse.detalle.idremesa.toString()
                   );
                   localStorage.removeItem('ClienteBeanPagoTranslado');
                   localStorage.removeItem('confirmaremesa');

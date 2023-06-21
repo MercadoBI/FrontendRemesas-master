@@ -151,10 +151,9 @@ export class InformacionBeneficiarioResultadoComponent
         envia_recibe_remesa.idremesa = this.detalleEnvio.idremesa; //this.resValicacionWU.mtcn;
         envia_recibe_remesa.envrec = 'E';
         envia_recibe_remesa.sucursal = '1'; // this.detalleLogin.detalle.estado.codigoAgencia;
-        envia_recibe_remesa.usuario =
-          this.detalleLogin.detalle.estado.usuarioLogin;
-        envia_recibe_remesa.idremesadora = '2';
-        envia_recibe_remesa.mdapag = '2';
+        envia_recibe_remesa.usuario = "INSTALADOR"//this.detalleLogin.detalle.estado.usuarioLogin;
+        envia_recibe_remesa.idremesadora = '1'; //2
+        envia_recibe_remesa.mdapag = '101';
         envia_recibe_remesa.impmdapag = this.Cantidad;
         envia_recibe_remesa.impcomrem = (
           parseFloat(this.listaremesa.comision) * 0.87
@@ -173,20 +172,22 @@ export class InformacionBeneficiarioResultadoComponent
         var mensajerespuesta = '';
         console.log(envia_recibe_remesa);
         this.api.postEnviaRecibeRemesa(envia_recibe_remesa).subscribe((res) => {
-          res.detalle.EnviaRecibeRemesasResponse.erroresnegocio.btErrorNegocio.map(
-            (e) => {
-              (respuesta = e.codigo), (mensajerespuesta = e.descripcion);
-            }
-          );
+          if (res.estado !== '0') {
+            // res.detalle.EnviaRecibeRemesasResponse.erroresnegocio.btErrorNegocio.map(
+            //   (e) => {
+            //     (respuesta = e.codigo), (mensajerespuesta = e.descripcion);
+            //   }
+            // );
+            mensajerespuesta = res.mensaje;
+            respuesta = res.estado ;
+          }
 
           if (respuesta != '') {
             this.onModalAdvertencia(mensajerespuesta);
             return;
           } else {
             this.onModalInformacion(
-              'Su Envío se registró con éxito \n IDREMESA    0000  ' +
-                this.detalleEnvio.idremesa
-            );
+            'Su envío se registró con éxito \n IDREMESA 0000' +this.detalleEnvio.idremesa);
             localStorage.removeItem('ClienteBeanEnvioTranslado');
             localStorage.removeItem('ListaRemesaEnvio');
             localStorage.removeItem('MTCNListaWU');
